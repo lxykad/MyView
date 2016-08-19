@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_view"
+    tools:context="com.lxy.myview.MainActivity">
+
+    <TextView
+        android:background="#39c6c1"
+        android:clickable="true"
+        android:id="@+id/bt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:text="test" />
+
+</RelativeLayout>
