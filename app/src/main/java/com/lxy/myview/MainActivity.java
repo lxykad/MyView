@@ -1,5 +1,6 @@
 package com.lxy.myview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.app.AppCompatActivity;
@@ -8,68 +9,36 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mBt;
+    private TextView mTvJump;
     private GestureDetector mGestureDetector;
     private ViewConfiguration mConfig;
-    private RelativeLayout mRootView = (RelativeLayout) findViewById(R.id.root_view);
 
     private VelocityTracker mTracker;
 
-    private ViewDragHelper mHelper = ViewDragHelper.create(mRootView, new ViewDragHelper.Callback() {
-        @Override
-        public boolean tryCaptureView(View child, int pointerId) {
-
-            return false;
-        }
-
-        //处理水平方向的越界
-        @Override
-        public int clampViewPositionHorizontal(View child, int left, int dx) {
-
-            return super.clampViewPositionHorizontal(child, left, dx);
-        }
-
-        //处理垂直方向的越界
-        @Override
-        public int clampViewPositionVertical(View child, int top, int dy) {
-            return super.clampViewPositionVertical(child, top, dy);
-        }
-
-        //监听拖动状态的改变
-        @Override
-        public void onViewDragStateChanged(int state) {
-            super.onViewDragStateChanged(state);
-        }
-
-        //捕获View
-        @Override
-        public void onViewCaptured(View capturedChild, int activePointerId) {
-            super.onViewCaptured(capturedChild, activePointerId);
-        }
-
-        //释放View
-        @Override
-        public void onViewReleased(View releasedChild, float xvel, float yvel) {
-            super.onViewReleased(releasedChild, xvel, yvel);
-        }
-    });
+    private ViewDragHelper mHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRootView = (RelativeLayout) findViewById(R.id.root_view);
-        
         mTracker = VelocityTracker.obtain();
         mConfig = ViewConfiguration.get(this);
         mBt = (TextView) findViewById(R.id.bt);
+        mTvJump = (TextView) findViewById(R.id.tv_jump);
+
+        mTvJump.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
 
         mGestureDetector = new GestureDetector(this, new GestureDetector.OnGestureListener() {
             @Override
@@ -171,5 +140,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         mHelper.processTouchEvent(event);
         return super.onTouchEvent(event);
+    }
+
+    public void jump(View view) {
+
     }
 }

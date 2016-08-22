@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lxy.myview.ui.DragLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root_view"
+    android:orientation="vertical"
     tools:context="com.lxy.myview.MainActivity">
 
     <TextView
-        android:background="#39c6c1"
-        android:clickable="true"
         android:id="@+id/bt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_margin="20dp"
+        android:background="#39c6c1"
         android:text="test" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:background="#30f0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_jump"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="#3f00"
+            android:text="跳转" />
+
+    </RelativeLayout>
+
+
+</com.lxy.myview.ui.DragLayout>
